@@ -5,7 +5,7 @@
     <title>Search Location Picker</title>
     <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&libraries=places"></script>
-    <script type="text/javascript" src="../src/search-location-picker.js"></script>
+    <script type="text/javascript" src="https://matthewlamdotjs.github.io/maps-gps-location-picker-search/search-location-picker.min.js"></script>
 </head>
 <body style="padding: 50px;">
     <div class="search-group">
@@ -25,9 +25,12 @@
     // creates the map
     // 1st arg is map div id
     // 2nd arg is searchbox input div id
-    renderMap('the-map','pac-input');
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        renderMap('the-map','pac-input');
+    });
     function confirmLocation(){
         document.getElementById('pin-latitude').innerHTML = getLat();
         document.getElementById('pin-longitude').innerHTML = getLng();
     }
+    
 </script>

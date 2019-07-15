@@ -10,7 +10,7 @@ var gmap_vars_searchDivId;
 
 function renderMap(mapId, searchId){
     gmap_vars_mapDivId = mapId;
-    gmap_vars_searchDivId = searchId
+    gmap_vars_searchDivId = searchId;
     getLocationInit(initSearchMap);
 }
 
@@ -18,7 +18,7 @@ function renderMap(mapId, searchId){
 function getLocationInit(callback) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            gmap_vars_locationLatitude = position.coords.latitude
+            gmap_vars_locationLatitude = position.coords.latitude;
             gmap_vars_locationLongitude = position.coords.longitude;
             callback();
         });
@@ -31,7 +31,7 @@ function getLocationInit(callback) {
 }
 
 function setPosition(position) {
-    gmap_vars_locationLatitude = position.coords.latitude
+    gmap_vars_locationLatitude = position.coords.latitude;
     gmap_vars_locationLongitude = position.coords.longitude;
 }
 
@@ -134,7 +134,7 @@ function initSearchMap() {
                     }
                 });
             });
-        })
+        });
 
         if (place.geometry.viewport) {
           // Only geocodes have viewport.

@@ -15,7 +15,7 @@ The following is a location picker that can be added to any web page. The picker
 ` <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&libraries=places"></script> ` <br>
 ` <script type="text/javascript" src="./search-location-picker.js"></script> ` <br>
 * Alternatively use the CDN from this repo <br>
-` <script type="text/javascript" src="./search-location-picker.js"></script> ` <br>
+` <script type="text/javascript" src="https://matthewlamdotjs.github.io/maps-gps-location-picker-search/search-location-picker.min.js"></script> ` <br>
 * You're ready to start using the location picker!
 
 # Rendering the map
