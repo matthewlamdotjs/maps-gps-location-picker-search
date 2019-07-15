@@ -24,14 +24,11 @@ The following is a location picker that can be added to any web page. The picker
 Example: <br>
 ` <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> ` <br>
 ` <div id="the-map" style="height: 500px; width: 500px;"></div> ` <br>
-<br>
 * Then call renderMap(MAP_ID, SEARCH_ID) like this: <br>
-` <script> ` <br>
-` renderMap('the-map','pac-input'); ` <br>
-` </script> ` <br>
-<br>
-* To get current Lat/Lng use getLat() and getLng()
-<br>
+` <script> renderMap('the-map','pac-input'); </script> ` <br>
+* To get current Lat/Lng use getLat() and getLng() <br>
+` document.getElementById('pin-latitude').innerHTML = getLat(); ` <br>
+` document.getElementById('pin-longitude').innerHTML = getLng(); ` <br>
 
 # Examples
 
