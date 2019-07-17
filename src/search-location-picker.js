@@ -39,15 +39,15 @@ SearchLocationPicker.getLocationInit = (callback) => {
 }
 
 SearchLocationPicker.setPosition = (position) => {
-SearchLocationPicker.gmap_vars_locationLatitude = position.coords.latitude;
-SearchLocationPicker.gmap_vars_locationLongitude = position.coords.longitude;
-// custom callback
-SearchLocationPicker.customCallback();
+    SearchLocationPicker.gmap_vars_locationLatitude = position.coords.latitude;
+    SearchLocationPicker.gmap_vars_locationLongitude = position.coords.longitude;
+    // custom callback
+    SearchLocationPicker.customCallback();
 }
 
 SearchLocationPicker.resetLocation = () => {
-SearchLocationPicker.gmap_vars_locationLatitude = null;
-SearchLocationPicker.gmap_vars_locationLongitude = null;
+    SearchLocationPicker.gmap_vars_locationLatitude = null;
+    SearchLocationPicker.gmap_vars_locationLongitude = null;
 }
 
 SearchLocationPicker.getLat = () => {
