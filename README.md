@@ -1,4 +1,4 @@
-# Location Picker using Google Maps API
+# Searchable Location Picker using Google Maps API
 
 The following is a location picker that can be added to any web page. The picker utilizes the Google Maps and Places API and will require a valid API key with billing information set up (otherwise search queries will not work).
 
@@ -11,11 +11,25 @@ The following is a location picker that can be added to any web page. The picker
 # Getting started
 
 * Obtain a Google Maps API key and set up billing (more info <a href="https://developers.google.com/maps/documentation/embed/get-api-key">HERE</a>)
-* Include Maps API script and location picker script <br>
-` <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&libraries=places"></script> ` <br>
-` <script type="text/javascript" src="./search-location-picker.js"></script> ` <br>
-* Alternatively use the CDN from this repo <br>
-` <script type="text/javascript" src="https://matthewlamdotjs.github.io/maps-gps-location-picker-search/search-location-picker.min.js"></script> ` <br>
+* Load Maps API script replacing YOUR_API_KEY_HERE with your new API key
+
+```html
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&libraries=places"></script>
+```
+
+* Load search-location-picker.js found in this repo @ ./src/search-location-picker.js (or ./search-location-picker.min.js for the minified version)
+
+
+```html 
+<script type="text/javascript" src="search-location-picker.js"></script>
+```
+
+* Alternatively use the CDN from this repo for the minified version
+
+```html
+<script type="text/javascript" src="https://matthewlamdotjs.github.io/maps-gps-location-picker-search/search-location-picker.min.js"></script>
+```
+
 * You're ready to start using the location picker!
 
 # Rendering the map
@@ -23,43 +37,95 @@ The following is a location picker that can be added to any web page. The picker
 To render the map, you must have a div element with id (where the map will go) as well as an input element (for the search bar). <br>
 <br>
 Example: <br>
-` <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> ` <br>
-` <div id="the-map" style="height: 500px; width: 500px;"></div> ` <br>
+
+```html
+<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+
+<div id="the-map" style="height: 500px; width: 500px;"></div>
+```
+
 <br>
 Then instantiate a SearchLocationPicker object like this: <br>
-<pre>
+
+```javascript
 let slp = new SearchLocationPicker('the-map','pac-input');
-</pre>
+```
 Then call renderMap() like this: <br>
-<pre>
+
+```javascript
 slp.renderMap();
-let slp = new SearchLocationPicker('the-map','pac-input');
-</pre>
+```
+
 To get current Lat/Lng use getLat() and getLng() like this: <br>
-<pre>
+```javascript
 document.getElementById('pin-latitude').innerHTML = slp.getLat();
 document.getElementById('pin-longitude').innerHTML = slp.getLng();
-</pre>
+```
 
 # Custom Callback
 
 You can set a custom callback for when the current selected location's coordinates change like this: <br>
 <br>
-<pre>
-document.addEventListener("DOMContentLoaded", function(event) { 
-    let slp = new SearchLocationPicker('the-map','pac-input');
-    slp.setCustomOnclickCallback(confirmLocation);
-    slp.renderMap();
-    
-    // Callback function for when map location changes
-    function confirmLocation(){
-        document.getElementById('pin-latitude').innerHTML = slp.getLat();
-        document.getElementById('pin-longitude').innerHTML = slp.getLng();
-    }
-});
-</pre><br>
+```javascript
+let slp = new SearchLocationPicker('the-map','pac-input');
+slp.setCustomOnclickCallback(confirmLocation);
+slp.renderMap();
 
-# Examples
+function confirmLocation(){
+    document.getElementById('pin-latitude').innerHTML = slp.getLat();
+    document.getElementById('pin-longitude').innerHTML = slp.getLng();
+}
+```
+<br>
 
-You can see a working example in this repo @ example/index.html (requires you to provide your own API key).
+# Example
 
+The whole thing together will look something like this:<br>
+<br>
+(also found in this repo @ ./example/index.html)
+<br>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Location Picker</title>
+    <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&libraries=places"></script>
+    <script type="text/javascript" src="https://matthewlamdotjs.github.io/maps-gps-location-picker-search/search-location-picker.min.js"></script>
+</head>
+<body style="padding: 50px;">
+    <div class="search-group">
+        <label>Search:</label>
+        <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+    </div>
+    <br>
+    <div id="the-map" style="height: 500px; width: 500px;"></div>
+    <br>
+    <p>Latitude: <span id="pin-latitude"></span></p>
+    <p>Longitude: <span id="pin-longitude"></span></p>
+</body>
+</html>
+
+<script>
+    // creates the map
+    // 1st arg is map div id
+    // 2nd arg is searchbox input div id
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        let slp = new SearchLocationPicker('the-map','pac-input');
+        slp.setCustomOnclickCallback(confirmLocation);
+        slp.renderMap();
+        
+        // Callback function for when map location changes
+        function confirmLocation(){
+            document.getElementById('pin-latitude').innerHTML = slp.getLat();
+            document.getElementById('pin-longitude').innerHTML = slp.getLng();
+        }
+    });
+</script>
+```
+
+Which will produce this:
+
+<img src="./example.png">
