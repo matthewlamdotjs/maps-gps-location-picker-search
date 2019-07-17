@@ -22,8 +22,7 @@ SearchLocationPicker.renderMap = (mapId, searchId) => {
 SearchLocationPicker.getLocationInit = (callback) => {
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition((position) => {
-            SearchLocationPicker.gmap_vars_locationLatitude = position.coords.latitude;
-            SearchLocationPicker.gmap_vars_locationLongitude = position.coords.longitude;
+            SearchLocationPicker.setPosition(position);
             callback();
         });
     } else { 
@@ -74,6 +73,12 @@ SearchLocationPicker.initSearchMap = () => {
         SearchLocationPicker.gmap_vars_searchBox.setBounds(SearchLocationPicker.gmap_vars_lp.getBounds());
     });
 
+    // set current location on map with pin
+    SearchLocationPicker.gmap_vars_currentMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(SearchLocationPicker.getLat(), SearchLocationPicker.getLng()), 
+        map: SearchLocationPicker.gmap_vars_lp
+    });
+
     let markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
@@ -86,7 +91,7 @@ SearchLocationPicker.initSearchMap = () => {
 
         // Clear out the old markers.
         markers.forEach((marker) => {
-        marker.setMap(null);
+            marker.setMap(null);
         });
         markers = [];
         
@@ -97,13 +102,13 @@ SearchLocationPicker.initSearchMap = () => {
 
         // if there's only one place then set latlng
         if(places.length == 1){
-        // Set position variables
-        SearchLocationPicker.setPosition({
-            coords: {
-                latitude: places[0].geometry.location.lat(),
-                longitude: places[0].geometry.location.lng()
-            }
-        });
+            // Set position variables
+            SearchLocationPicker.setPosition({
+                coords: {
+                    latitude: places[0].geometry.location.lat(),
+                    longitude: places[0].geometry.location.lng()
+                }
+            });
         }
 
         // For each place, get the icon, name and location.
@@ -163,7 +168,7 @@ SearchLocationPicker.initSearchMap = () => {
 SearchLocationPicker.googleMapClickHandler = (event) => {
     // Remove old pin
     if(SearchLocationPicker.gmap_vars_currentMarker){
-    SearchLocationPicker.gmap_vars_currentMarker.setMap(null);
+        SearchLocationPicker.gmap_vars_currentMarker.setMap(null);
     }
     // Set new pin
     SearchLocationPicker.gmap_vars_currentMarker = new google.maps.Marker({
