@@ -21,9 +21,11 @@ The following is a location picker that can be added to any web page. The picker
 # Rendering the map
 
 * To render the map, you must have a div element with id (where the map will go) as well as an input element (for the search bar). <br>
+<br>
 Example: <br>
 ` <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> ` <br>
-` <div id="the-map" style="height: 500px; width: 500px;"></div> `
+` <div id="the-map" style="height: 500px; width: 500px;"></div> ` <br>
+<br>
 * Then call renderMap(MAP_ID, SEARCH_ID) like this: <br>
 <pre> SearchLocationPicker.renderMap('the-map','pac-input'); </pre>
 * To get current Lat/Lng use getLat() and getLng() <br>
@@ -34,7 +36,7 @@ document.getElementById('pin-longitude').innerHTML = SearchLocationPicker.getLng
 
 # Custom Callback
 
-You can set a custom callback for when the current location's coordinates change like this. <br>
+You can set a custom callback for when the current selected location's coordinates change like this: <br>
 <br>
 <pre>
 SearchLocationPicker.setCustomOnclickCallback(confirmLocation);
@@ -47,5 +49,5 @@ function confirmLocation(){
 
 # Examples
 
-You can see a working example in example/index.html (requires you to provide your own API key).
+You can see a working example in this repo @ example/index.html (requires you to provide your own API key).
 
