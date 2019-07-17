@@ -26,11 +26,11 @@
     // 1st arg is map div id
     // 2nd arg is searchbox input div id
     document.addEventListener("DOMContentLoaded", function(event) { 
-        renderMap('the-map','pac-input');
+        SearchLocationPicker.renderMap('the-map','pac-input');
     });
     function confirmLocation(){
-        document.getElementById('pin-latitude').innerHTML = getLat();
-        document.getElementById('pin-longitude').innerHTML = getLng();
+        document.getElementById('pin-latitude').innerHTML = SearchLocationPicker.getLat();
+        document.getElementById('pin-longitude').innerHTML = SearchLocationPicker.getLng();
     }
     
 </script>
