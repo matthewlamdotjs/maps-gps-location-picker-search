@@ -30,7 +30,7 @@ function SearchLocationPicker(mapId, searchId) {
         }
     };
 
-    // Returns Lattitude of Selected Location
+    // Returns Latitude of Selected Location
     _this.getLat = function(){
         return _this.gmap_vars_locationLatitude;
     };
