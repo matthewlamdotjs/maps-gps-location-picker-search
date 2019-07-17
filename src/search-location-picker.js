@@ -79,7 +79,7 @@ function SearchLocationPicker(mapId, searchId) {
     };
 
     // Initializes Google Map API
-    // Modified from https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
+    // Modified from initAutocomplete() found @ https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
     function initSearchMap(){
         _this.gmap_vars_lp = new google.maps.Map(document.getElementById(_this.gmap_vars_mapDivId), {
             center: {lat: parseFloat(_this.gmap_vars_locationLatitude), lng: parseFloat(_this.gmap_vars_locationLongitude)},
