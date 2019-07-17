@@ -26,12 +26,19 @@ Example: <br>
 ` <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> ` <br>
 ` <div id="the-map" style="height: 500px; width: 500px;"></div> ` <br>
 <br>
-Then call renderMap(MAP_ID, SEARCH_ID) like this: <br>
-<pre> SearchLocationPicker.renderMap('the-map','pac-input'); </pre>
-To get current Lat/Lng use getLat() and getLng() <br>
+Then instantiate a SearchLocationPicker object like this: <br>
 <pre>
-document.getElementById('pin-latitude').innerHTML = SearchLocationPicker.getLat();
-document.getElementById('pin-longitude').innerHTML = SearchLocationPicker.getLng();
+let slp = new SearchLocationPicker('the-map','pac-input');
+</pre>
+Then call renderMap() like this: <br>
+<pre>
+slp.renderMap();
+let slp = new SearchLocationPicker('the-map','pac-input');
+</pre>
+To get current Lat/Lng use getLat() and getLng() like this: <br>
+<pre>
+document.getElementById('pin-latitude').innerHTML = slp.getLat();
+document.getElementById('pin-longitude').innerHTML = slp.getLng();
 </pre>
 
 # Custom Callback
@@ -39,12 +46,17 @@ document.getElementById('pin-longitude').innerHTML = SearchLocationPicker.getLng
 You can set a custom callback for when the current selected location's coordinates change like this: <br>
 <br>
 <pre>
-SearchLocationPicker.setCustomOnclickCallback(confirmLocation);
-
-function confirmLocation(){
-    document.getElementById('pin-latitude').innerHTML = SearchLocationPicker.getLat();
-    document.getElementById('pin-longitude').innerHTML = SearchLocationPicker.getLng();
-}
+document.addEventListener("DOMContentLoaded", function(event) { 
+    let slp = new SearchLocationPicker('the-map','pac-input');
+    slp.setCustomOnclickCallback(confirmLocation);
+    slp.renderMap();
+    
+    // Callback function for when map location changes
+    function confirmLocation(){
+        document.getElementById('pin-latitude').innerHTML = slp.getLat();
+        document.getElementById('pin-longitude').innerHTML = slp.getLng();
+    }
+});
 </pre><br>
 
 # Examples

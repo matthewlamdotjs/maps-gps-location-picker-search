@@ -25,12 +25,14 @@
     // 1st arg is map div id
     // 2nd arg is searchbox input div id
     document.addEventListener("DOMContentLoaded", function(event) { 
-        SearchLocationPicker.renderMap('the-map','pac-input');
-        SearchLocationPicker.setCustomOnclickCallback(confirmLocation);
+        let slp = new SearchLocationPicker('the-map','pac-input');
+        slp.setCustomOnclickCallback(confirmLocation);
+        slp.renderMap();
+        
+        // Callback function for when map location changes
+        function confirmLocation(){
+            document.getElementById('pin-latitude').innerHTML = slp.getLat();
+            document.getElementById('pin-longitude').innerHTML = slp.getLng();
+        }
     });
-    function confirmLocation(){
-        document.getElementById('pin-latitude').innerHTML = SearchLocationPicker.getLat();
-        document.getElementById('pin-longitude').innerHTML = SearchLocationPicker.getLng();
-    }
-    
 </script>
