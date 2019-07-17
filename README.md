@@ -22,7 +22,7 @@ The following is a location picker that can be added to any web page. The picker
 
 * To render the map, you must have a div element with id (where the map will go) as well as an input element (for the search bar). <br>
 Example: <br>
-` <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> `
+` <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> ` <br>
 ` <div id="the-map" style="height: 500px; width: 500px;"></div> `
 * Then call renderMap(MAP_ID, SEARCH_ID) like this: <br>
 <pre> SearchLocationPicker.renderMap('the-map','pac-input'); </pre>
