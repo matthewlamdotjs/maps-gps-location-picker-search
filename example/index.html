@@ -15,7 +15,6 @@
     <br>
     <div id="the-map" style="height: 500px; width: 500px;"></div>
     <br>
-    <button onclick="confirmLocation()">Set Location</button>
     <p>Latitude: <span id="pin-latitude"></span></p>
     <p>Longitude: <span id="pin-longitude"></span></p>
 </body>
@@ -27,6 +26,7 @@
     // 2nd arg is searchbox input div id
     document.addEventListener("DOMContentLoaded", function(event) { 
         SearchLocationPicker.renderMap('the-map','pac-input');
+        SearchLocationPicker.setCustomOnclickCallback(confirmLocation);
     });
     function confirmLocation(){
         document.getElementById('pin-latitude').innerHTML = SearchLocationPicker.getLat();
